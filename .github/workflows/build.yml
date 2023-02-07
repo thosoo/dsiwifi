@@ -21,7 +21,7 @@ jobs:
         run: |
           make 
       - name: Upload test_app.nds
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test_app.nds
           path: test_app/test_app.nds
