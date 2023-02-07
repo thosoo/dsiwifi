@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: ["*"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm
+    name: Build with Docker using devkitARM
+    steps:
+      - name: Install Python
+        run: sudo apt-get -y install python
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      - name: Build dsiwifi
+        run: |
+          make 
+      - name: Upload test_app.nds
+        uses: actions/upload-artifact@v2
+        with:
+          name: test_app.nds
+          path: test_app/test_app.nds
