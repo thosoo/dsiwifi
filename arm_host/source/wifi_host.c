@@ -421,7 +421,7 @@ void wifi_host_tick()
         // Sometimes DHCP can have some trouble enumerating.
         // Since we *really* need an IP address, just keep prodding every so often
         // if we don't get one quickly.
-        if (host_bLwipInitted && ath_netif.ip_addr.addr == 0xFFFFFFFF || ath_netif.ip_addr.addr == 0x0)
+        if ((host_bLwipInitted && ath_netif.ip_addr.addr == 0xFFFFFFFF) || ath_netif.ip_addr.addr == 0x0)
         {
             if (DSiWifi_pfnReconnectHandler)
                 DSiWifi_pfnReconnectHandler();
